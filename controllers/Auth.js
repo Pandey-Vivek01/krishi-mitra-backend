@@ -54,7 +54,6 @@ exports.sendOTP = async(req,res) =>{
         res.status(200).json({
             success:true,
             message:"OTP sent successfully",
-            OTP:otp,
         });
     }
     catch(error){
@@ -83,6 +82,14 @@ exports.signup = async (req, res)=>{
         } = req.body;
 
         // Validation
+
+        const validTypes = ["Farmer", "Buyer", "Expert"];
+          if(!validTypes.includes(accountType)){
+            return res.status(400).json({
+            success: false,
+            message: "Invalid account type"
+         });
+    }
         if(!firstName || !lastName || !email || !password || !confirmPassword || !otp){
             return res.status(403).json({
                 success:false,
@@ -132,7 +139,6 @@ exports.signup = async (req, res)=>{
             gender:null,
             dateOfBirth:null,
             about:null,
-            contactNumber:null
         });
 
         const user = await User.create({
@@ -271,7 +277,6 @@ exports.changePassword = async(req,res) => {
             const emailResponse = await mailSender(
                 updatedUserDetails.email,
                 "Password for your account has been updated ",
-                    updatedUserDetails.email
                     `password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
                 )
             

@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
         trim:true, 
     },
     contactNumber:{
-        type:Number,
+        type:String,
         required:true
     },
     password:{
@@ -32,12 +32,12 @@ const userSchema = new mongoose.Schema({
     },
     additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
         ref:"Profile",
+        default : null,
     },
     image:{
         type:String,
-        required:true,
+         default: "", 
     },
     token:{
         type:String,
