@@ -12,13 +12,15 @@ async function autoRecommend(req, res) {
     }
 
     // Fetch latest weather for the location
-    const weather = await Weather.findOne({ region: location }).sort({ createdAt: -1 });
+    const weather = await Weather.findOne({ region: location }).sort({ date: -1 });
     if (!weather) return res.status(404).json({ message: "Weather data not found for this location" });
 
     // Fetch all crops for the soil type
     // const crops = await RecommendCrop.find({ optimalSoilType: soilType });
     console.log("Looking for crops with soilType:", soilType);
-    const crops = await RecommendCrop.find({ optimalSoilType: soilType });
+    const crops = await RecommendCrop.find({ optimalSoilType: soilType,
+      season: weather.season
+     });
     console.log("Crops found:", crops);
     
     if (!crops || crops.length === 0) {

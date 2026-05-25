@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const recommendCropSchema = new mongoose.Schema({
   name: { type: String, required: true },                 // Crop name
-  season: { type: String, enum: ["Summer", "Winter", "Monsoon", "Autumn"], required: true },
+  season: { type: String, enum: ["Summer", "Winter", "Kharif", "Rabi"], required: true },
   optimalSoilType: { type: String, required: true },      // Soil type for this crop
 
   // Environmental fields for recommendation
