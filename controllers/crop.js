@@ -42,7 +42,7 @@ exports.getAllCrops = async (req, res) => {
     if (sortBy) sort[sortBy] = order === "asc" ? 1 : -1;
 
     const crops = await Crop.find(filter)
-      .populate("farmer", "name email")
+      .populate("farmer", "firstName lastName email")
       .sort(sort)
       .skip(skip)
       .limit(limit);
@@ -70,7 +70,12 @@ exports.updateCrop = async (req, res) => {
     if (crop.farmer.toString() !== req.user.id)
       return res.status(403).json({ message: "Not authorized" });
 
-    const updated = await Crop.findByIdAndUpdate(id, req.body, { new: true });
+      const { name, quantity, price, description, location } = req.body;
+    const updated = await Crop.findByIdAndUpdate(
+      id, 
+      { name, quantity, price, description, location }, 
+      { new: true }
+   );
     res.status(200).json({ message: "Crop updated", crop: updated });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
