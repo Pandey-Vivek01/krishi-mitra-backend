@@ -13,7 +13,7 @@ async function getWeatherByCity(city) {
       humidity: d.main.humidity,
       rainfall: d.rain?.['1h'] || 0,
       season: determineSeason(new Date()),
-      raw: d,
+      //raw: d, //poora API response store ho raha hai (unnecessary)
     };
   } catch (error) {
     console.error("Error fetching weather:", error.message);
@@ -34,7 +34,7 @@ async function getWeatherByCoords(lat, lon) {
       humidity: d.main.humidity,
       rainfall: d.rain?.['1h'] || 0,
       season: determineSeason(new Date()),
-      raw: d,
+     // raw: d,
     };
   } catch (error) {
     console.error("Error fetching weather:", error.message);
@@ -45,10 +45,10 @@ async function getWeatherByCoords(lat, lon) {
 //  function to determine season by month
 function determineSeason(date) {
   const month = date.getMonth() + 1; // 0-indexed
-  if (month >= 6 && month <= 9) return "Monsoon";
-  if (month >= 3 && month <= 5) return "Summer";
-  if (month === 12 || month <= 2) return "Winter";
-  return "Autumn";
+  if (month >= 6 && month <= 9) return "Kharif";
+  if (month >= 10 && month <= 11) return "Rabi";
+  if (month >=3 && month <= 5) return "Summer";
+  return "Winter";
 }
 
 module.exports = { getWeatherByCity, getWeatherByCoords };

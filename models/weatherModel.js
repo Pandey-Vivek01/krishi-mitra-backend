@@ -20,7 +20,7 @@ const weatherSchema = new mongoose.Schema({
   },
   season: {
     type: String,
-    enum: ["Summer", "Winter", "Monsoon", "Autumn"],
+    enum: ["Summer", "Winter","Kharif", "Rabi"],
     required: true,
   },
   date: {

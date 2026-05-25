@@ -16,15 +16,15 @@ async function fetchWeather(req, res) {
       return res.status(400).json({ message: "Please provide city or lat/lon" });
     }
 
-    // Save to MongoDB
-    const doc = new Weather({
+    //Sirf cache karo (1 hour purana ho toh fetch, warna DB se do)
+      const existing = await Weather.findOne({ 
       region: weather.region,
-      temperature: weather.temperature,
-      humidity: weather.humidity,
-      rainfall: weather.rainfall,
-      season: weather.season,
+       createdAt: { $gte: new Date(Date.now() - 60*60*1000) } // 1 hour
     });
-    await doc.save();
+
+    if(!existing){
+     await Weather.create({ ...weather });
+}
 
     res.status(200).json({ message: "Weather fetched successfully", weather });
   } catch (error) {
