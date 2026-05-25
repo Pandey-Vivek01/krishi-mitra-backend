@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Wheat",
+    "season": "Winter",
+    "optimalSoilType": "Loamy",
+    "minTemp": 15,
+    "maxTemp": 30,
+    "minHumidity": 40,
+    "maxHumidity": 70,
+    "minRainfall": 50,
+    "maxRainfall": 200,
+    "fertilizerTips": "Use nitrogen-rich fertilizer for best yield."
+  },
+  {
+    "name": "Rice",
+    "season": "Monsoon",
+    "optimalSoilType": "Clayey",
+    "minTemp": 20,
+    "maxTemp": 35,
+    "minHumidity": 70,
+    "maxHumidity": 90,
+    "minRainfall": 150,
+    "maxRainfall": 300,
+    "fertilizerTips": "Apply phosphorus-rich fertilizer in initial growth."
+  },
+  {
+    "name": "Maize",
+    "season": "Summer",
+    "optimalSoilType": "Loamy",
+    "minTemp": 18,
+    "maxTemp": 32,
+    "minHumidity": 50,
+    "maxHumidity": 75,
+    "minRainfall": 80,
+    "maxRainfall": 200,
+    "fertilizerTips": "Nitrogen and potassium improve cob quality."
+  },
+  {
+    "name": "Barley",
+    "season": "Winter",
+    "optimalSoilType": "Sandy Loam",
+    "minTemp": 10,
+    "maxTemp": 25,
+    "minHumidity": 30,
+    "maxHumidity": 60,
+    "minRainfall": 40,
+    "maxRainfall": 120,
+    "fertilizerTips": "Apply organic manure to increase yield."
+  },
+  {
+    "name": "Cotton",
+    "season": "Summer",
+    "optimalSoilType": "Loamy",
+    "minTemp": 20,
+    "maxTemp": 35,
+    "minHumidity": 50,
+    "maxHumidity": 70,
+    "minRainfall": 60,
+    "maxRainfall": 120,
+    "fertilizerTips": "Potassium fertilizer helps fiber quality."
+  },
+  {
+    "name": "Soybean",
+    "season": "Monsoon",
+    "optimalSoilType": "Loamy",
+    "minTemp": 18,
+    "maxTemp": 32,
+    "minHumidity": 50,
+    "maxHumidity": 80,
+    "minRainfall": 75,
+    "maxRainfall": 200,
+    "fertilizerTips": "Add phosphorus during sowing for better root growth."
+  },
+  {
+    "name": "Sugarcane",
+    "season": "Summer",
+    "optimalSoilType": "Clayey",
+    "minTemp": 20,
+    "maxTemp": 35,
+    "minHumidity": 60,
+    "maxHumidity": 85,
+    "minRainfall": 100,
+    "maxRainfall": 250,
+    "fertilizerTips": "Apply nitrogen-rich fertilizer after 2 months."
+  },
+  {
+    "name": "Potato",
+    "season": "Winter",
+    "optimalSoilType": "Sandy Loam",
+    "minTemp": 15,
+    "maxTemp": 25,
+    "minHumidity": 50,
+    "maxHumidity": 70,
+    "minRainfall": 60,
+    "maxRainfall": 120,
+    "fertilizerTips": "Use well-rotted compost for healthy tubers."
+  },
+  {
+    "name": "Tomato",
+    "season": "Summer",
+    "optimalSoilType": "Loamy",
+    "minTemp": 18,
+    "maxTemp": 30,
+    "minHumidity": 50,
+    "maxHumidity": 80,
+    "minRainfall": 50,
+    "maxRainfall": 100,
+    "fertilizerTips": "Balanced NPK fertilizer for better fruiting."
+  },
+  {
+    "name": "Chili",
+    "season": "Summer",
+    "optimalSoilType": "Loamy",
+    "minTemp": 20,
+    "maxTemp": 32,
+    "minHumidity": 50,
+    "maxHumidity": 75,
+    "minRainfall": 50,
+    "maxRainfall": 120,
+    "fertilizerTips": "Apply potassium to increase color and pungency."
+  }
+]

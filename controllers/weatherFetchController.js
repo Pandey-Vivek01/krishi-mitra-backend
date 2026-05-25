@@ -1,0 +1,36 @@
+const Weather = require("../models/weatherModel"); // your Weather schema
+const { getWeatherByCity, getWeatherByCoords } = require("../services/openWeather");
+
+// GET /api/weather/fetch?city=Patna
+// or GET /api/weather/fetch?lat=25.61&lon=85.14
+async function fetchWeather(req, res) {
+  try {
+    const { city, lat, lon } = req.query;
+    let weather;
+
+    if (city) {
+      weather = await getWeatherByCity(city);
+    } else if (lat && lon) {
+      weather = await getWeatherByCoords(lat, lon);
+    } else {
+      return res.status(400).json({ message: "Please provide city or lat/lon" });
+    }
+
+    // Save to MongoDB
+    const doc = new Weather({
+      region: weather.region,
+      temperature: weather.temperature,
+      humidity: weather.humidity,
+      rainfall: weather.rainfall,
+      season: weather.season,
+    });
+    await doc.save();
+
+    res.status(200).json({ message: "Weather fetched successfully", weather });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to fetch weather" });
+  }
+}
+
+module.exports = { fetchWeather };
