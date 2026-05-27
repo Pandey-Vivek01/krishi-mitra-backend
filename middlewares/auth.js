@@ -92,7 +92,7 @@ exports.isExpert = async (req, res, next) =>{
                 message:"This is a protected route for Expert"
             });
         }
-        // ✅ Verified check add karo
+        // Verified check add karo
         const user = await User.findById(req.user.id);
         if(!user.additionalDetails.verified){
             return res.status(403).json({

@@ -7,6 +7,7 @@ const weatherRoutes = require("./routes/weatherRoutes");
 const recommendRoutes = require("./routes/recommendRoutes");
 const postRoutes = require("./routes/postRoutes");
 const qaRoutes = require("./routes/qaRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
@@ -34,6 +35,7 @@ app.use("/api/v1/weather", weatherRoutes);
 app.use("/api/v1/auto-recommend", recommendRoutes);
 app.use("/api/v1/posts", postRoutes);
 app.use("/api/v1/qa", qaRoutes);
+app.use("/api/v1/profile", profileRoutes);
 
  
 
