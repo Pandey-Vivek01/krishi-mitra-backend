@@ -5,6 +5,7 @@ const cropSchema = Joi.object({
   quantity: Joi.number().min(1).required(),
   price: Joi.number().min(0).required(),
   location: Joi.string().required(),
+  description: Joi.string().allow('').optional(),  // ← add karo
 });
 
-module.exports = cropSchema ;
+module.exports = cropSchema;

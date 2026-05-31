@@ -20,6 +20,15 @@ const PORT = process.env.PORT || 4000;
 
 //database connect
 database.connect();
+// Models register
+require("./models/User");
+require("./models/Profile");
+require("./models/Crop");
+require("./models/Post");
+require("./models/Comment");
+require("./models/QA");
+require("./models/recommendCropModel");
+require("./models/weatherModel");
 //middlewares
 app.use(express.json());  // app.use() is used to add middleware
 app.use(cookieParser());

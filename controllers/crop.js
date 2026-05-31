@@ -1,4 +1,5 @@
-const Crop = require("../models/Crop");
+const Crop = require("../models/Crop");  
+const User = require("../models/User");
 
 //  Add new crop
 exports.addCrop = async (req, res) => {
@@ -19,11 +20,10 @@ exports.addCrop = async (req, res) => {
           message: "Crop added successfully",
           crop: newCrop 
         });
-  } catch (error) {
-    res.status(500).json({
-         message: "Server error",
-          error });
-  }
+  }  catch (error) {
+    console.log("Crop fetch error:", error); 
+    res.status(500).json({ message: "Server error" });
+}
 };
 
 //  Get all crops (with search, sort, pagination)
@@ -56,6 +56,7 @@ exports.getAllCrops = async (req, res) => {
       crops,
     });
   } catch (error) {
+    console.log("getAllCrops error:", error); // ← add karo
     res.status(500).json({ message: "Server error" });
   }
 };
