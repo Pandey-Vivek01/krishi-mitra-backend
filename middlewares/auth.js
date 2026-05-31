@@ -93,13 +93,13 @@ exports.isExpert = async (req, res, next) =>{
             });
         }
         // Verified check add karo
-        const user = await User.findById(req.user.id);
-        if(!user.additionalDetails.verified){
-            return res.status(403).json({
-                success: false,
-                message: "Your Expert profile is not verified yet"
-            });
-        }
+        // const user = await User.findById(req.user.id);
+        // if(!user.additionalDetails.verified){
+        //     return res.status(403).json({
+        //         success: false,
+        //         message: "Your Expert profile is not verified yet"
+        //     });
+        // }
         next();
     }
     catch(error){
