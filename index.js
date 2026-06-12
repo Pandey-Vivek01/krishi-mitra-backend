@@ -15,11 +15,16 @@ const cookieParser = require("cookie-parser");
 
 const dotenv = require("dotenv");
 
+const { cloudinaryConnect } = require("./config/cloudinary");
+const productRoutes = require("./routes/productRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
 //database connect
 database.connect();
+cloudinaryConnect();
 // Models register
 require("./models/User");
 require("./models/Profile");
@@ -29,6 +34,8 @@ require("./models/Comment");
 require("./models/QA");
 require("./models/recommendCropModel");
 require("./models/weatherModel");
+require("./models/Product");
+require("./models/Order");
 //middlewares
 app.use(express.json());  // app.use() is used to add middleware
 app.use(cookieParser());
@@ -46,6 +53,8 @@ app.use("/api/v1/auto-recommend", recommendRoutes);
 app.use("/api/v1/posts", postRoutes);
 app.use("/api/v1/qa", qaRoutes);
 app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/orders", orderRoutes);
 
  
 
