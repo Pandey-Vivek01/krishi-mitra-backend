@@ -19,6 +19,8 @@ const { cloudinaryConnect } = require("./config/cloudinary");
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 
+const chatRoutes = require("./routes/chatRoutes");
+
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
@@ -36,6 +38,8 @@ require("./models/recommendCropModel");
 require("./models/weatherModel");
 require("./models/Product");
 require("./models/Order");
+require("./models/Conversation");
+require("./models/Message");
 //middlewares
 app.use(express.json());  // app.use() is used to add middleware
 app.use(cookieParser());
@@ -55,7 +59,7 @@ app.use("/api/v1/qa", qaRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/orders", orderRoutes);
-
+app.use("/api/v1/chat", chatRoutes);
  
 
 app.get("/", (req, res) => {
@@ -65,7 +69,14 @@ app.get("/", (req, res) => {
 	});
 });
 
-app.listen(PORT, () => {
-	console.log(`App is running at ${PORT}`)
-})
+
+const http = require("http");
+const initSocket = require("./socket/index");
+
+const server = http.createServer(app);
+initSocket(server);
+
+server.listen(PORT, () => {
+  console.log(`App is running at ${PORT}`);
+});
 
