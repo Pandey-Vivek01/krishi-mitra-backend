@@ -18,8 +18,9 @@
     "file-upload": "^0.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.19.1",
-    "nodemailer": "^8.0.10",
+    "nodemailer": "^9.0.1",
     "otp-generator": "^4.0.1",
+    "razorpay": "^2.9.6",
     "socket.io": "^4.8.3"
   },
   "devDependencies": {

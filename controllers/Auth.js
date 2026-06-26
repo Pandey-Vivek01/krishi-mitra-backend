@@ -203,7 +203,7 @@ exports.login = async(req, res) =>{
             // When password is matched
             let token = jwt.sign(jwtPayload,
                                  process.env.JWT_SECRET,
-                                 {expiresIn:"2h"}
+                                 {expiresIn:"7d"}
             );
             user.token = token;
             user.password = undefined; // both will locally stored and password will not be shown in frontend if you want to acces with user.password to enhance security

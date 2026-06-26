@@ -11,10 +11,11 @@ exports.auth = async (req, res, next) => {
     try{
         // Extract jwt token
         //PENDING : other ways to fetch token
-        const token = req.cookies.token   // cookie se try karo
-           || req.body.token             // body se try karo
-           || req.headers["authorization"]?.replace("Bearer ", "");
-           // header se try karo, "Bearer " hata ke
+
+
+        const token = req.headers["authorization"]?.replace("Bearer ", "") // header se try karo, "Bearer " hata ke
+           || req.body.token        // body se try karo     
+           || req.cookies.token;     // cookie se try karo
 
         if(!token){
             return res.status(401).json({
@@ -25,13 +26,12 @@ exports.auth = async (req, res, next) => {
         // varify the token
         try{
              const decode =  jwt.verify(token, process.env.JWT_SECRET);
-             
-             console.log(decode);
              req.user = decode;
              next();                     //Calls the next middleware or controller in the request–response cycle.
                                          //Without next(), the request would stop here and not move forward.
         }
          catch(error){
+            console.log("JWT ERROR:", error.message); 
             return res.status(401).json({
                 success:false,
                 message:"Token is invailed"
