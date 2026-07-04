@@ -23,6 +23,7 @@ const orderRoutes = require("./routes/orderRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 
 const paymentRoutes = require("./routes/paymentRoutes");
+const mandiRoutes = require("./routes/mandiRoutes");
 
 dotenv.config();
 const PORT = process.env.PORT || 4000;
@@ -73,6 +74,7 @@ app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/orders", orderRoutes);
 app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/payment", paymentRoutes);
+app.use("/api/v1/mandi", mandiRoutes);
  
 
 app.get("/", (req, res) => {
